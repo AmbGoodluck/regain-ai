@@ -1,4 +1,4 @@
-# Regain AI — Product Requirements Document
+# Regain AI - Product Requirements Document
 Portfolio Project — CLI Phase
 
 | Field | Detail |
