@@ -4,7 +4,7 @@ A Python CLI tool that parses website contact form submissions
 and generates CRM-ready outputs using AI.
 
 ## Status
-🚧 In Progress
+In Progress
 
 ## Planned Features
 - CSV contact form ingestion
