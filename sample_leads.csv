@@ -1,0 +1,4 @@
+id,name,phone,email,source,notes
+1,Marcus Johnson,(415) 555-0101,marcus@example.com,website_form,"Needs roof repair estimate this week"
+2,Dana Lee,415-555-0199,dana@example.com,missed_call,"Called after hours about HVAC maintenance"
+3,Priya Patel,+1-415-555-0133,priya@example.com,google_ads,"Requested plumbing quote for leak"
