@@ -1,11 +1,10 @@
 """Shared utilities for the Regain AI CLI workflow."""
 
-import os
-from typing import Any, Mapping, Optional
+import os  # directory creation for output paths
 
 
-def normalize_scalar(value: Any) -> str:
-    """Return a trimmed string representation of the provided value."""
+def normalize_scalar(value):
+    """Return a trimmed string representation of value, or an empty string."""
     if value is None:
         return ""
 
@@ -15,12 +14,12 @@ def normalize_scalar(value: Any) -> str:
     return str(value).strip()
 
 
-def is_blank(value: Any) -> bool:
-    """Return True when the provided value is empty or whitespace-only."""
+def is_blank(value):
+    """Return True when a value is empty or only whitespace."""
     return normalize_scalar(value) == ""
 
 
-def normalize_row(row: Optional[Mapping[str, Any]]) -> dict[str, str]:
+def normalize_row(row):
     """Return a cleaned copy of a mapping with trimmed keys and values."""
     if not row:
         return {}
@@ -31,15 +30,15 @@ def normalize_row(row: Optional[Mapping[str, Any]]) -> dict[str, str]:
     }
 
 
-def get_field(row: Optional[Mapping[str, Any]], key: str, default: Any = "") -> str:
-    """Safely read a normalized field from a mapping."""
+def get_field(row, key, default=""):
+    """Safely read a normalized field from a mapping, falling back cleanly."""
     if row is None:
         return normalize_scalar(default)
 
     return normalize_scalar(row.get(key, default))
 
 
-def ensure_parent_dir(path: str) -> None:
+def ensure_parent_dir(path):
     """Create the parent directory for a file path when it does not exist."""
     parent = os.path.dirname(os.path.abspath(path))
 
