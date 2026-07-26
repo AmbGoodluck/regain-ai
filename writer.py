@@ -1,6 +1,8 @@
 import json  # json.dump for pretty, deterministic output
 from datetime import datetime, timezone  # ISO 8601 UTC timestamp for processed_at
 
+from utils import ensure_parent_dir
+
 
 def write_output(leads, output_path="output.json", success_count=0, error_count=0, dry_run=False, verbose=False):
     """
@@ -32,6 +34,8 @@ def write_output(leads, output_path="output.json", success_count=0, error_count=
         print(f"Leads that would be written: {len(leads)}")
         print(f"Output path (not written):   {output_path}\n")
         return output
+
+    ensure_parent_dir(output_path)
 
     with open(output_path, "w", encoding="utf-8") as outfile:
         json.dump(output, outfile, indent=2)
