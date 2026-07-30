@@ -1,25 +1,26 @@
 # Regain AI
 
-A Python CLI tool that parses website contact form submissions and enriches leads with Claude insights into CRM-ready JSON output.
+I built this Python CLI to take a CSV of website contact form submissions, send each row to the Claude API for structured extraction, and write the results to a CRM-ready JSON file. It's Phase 1 of a larger idea (see `PRD.md`) — a standalone, working tool rather than a demo stub.
 
 ## Status
 
-Working — v1.0
+The CLI runs end to end: CSV in, Claude extraction, JSON out. Covered by a pytest suite (unit tests plus a full CLI run).
 
 ## Features
 
-- CSV contact form ingestion
-- AI-powered data extraction and structuring via the Claude API
-- JSON output formatted for CRM import
-- (Phase 2) Automated follow-up via Twilio
+- CSV contact form ingestion, with blank rows skipped and a parse summary logged
+- Structured lead extraction via the Claude API (name, email, phone, service requested, urgency, preferred contact time)
+- Retry handling for rate limits (exponential backoff) and transient API errors
+- JSON output with a metadata block (`total_leads`, `processed_at`, `success_count`, `error_count`)
+- `--dry-run` to parse and preview without calling the API or touching disk
+
+Phase 2 (not part of this CLI) is the full SaaS direction from `PRD.md`/`SPEC.md`: a webhook-driven ledger that triggers AI voice callbacks and books appointments via Cal.com.
 
 ## Tech Stack
 
-- Python
-- Claude API
-- CSV / JSON
-
-CLI tool for ingesting lead data from CSV, enriching each lead with Claude-generated insights, and exporting results to JSON.
+- Python (stdlib `csv`, `json`, `argparse`)
+- Claude API (`anthropic` SDK)
+- pytest for testing
 
 ## Project Structure
 
@@ -32,6 +33,7 @@ CLI tool for ingesting lead data from CSV, enriching each lead with Claude-gener
 ├── sample_leads.csv
 ├── tests/
 ├── .env.example
+├── .gitignore
 ├── requirements.txt
 ├── requirements-dev.txt
 ├── pytest.ini
@@ -48,11 +50,11 @@ CLI tool for ingesting lead data from CSV, enriching each lead with Claude-gener
 pip install -r requirements.txt
 ```
 
-For running the test suite, install the dev dependencies instead (this also installs the runtime dependencies above):
+   To also run the test suite, install `requirements-dev.txt` instead — it pulls in the runtime dependencies above plus pytest:
 
-```bash
-pip install -r requirements-dev.txt
-```
+   ```bash
+   pip install -r requirements-dev.txt
+   ```
 
 3. Create a local environment file from the template:
 
@@ -80,11 +82,11 @@ Run in dry mode (parses the CSV and previews the write, but skips the Claude API
 python main.py --input sample_leads.csv --output leads_output.json --dry-run
 ```
 
-Add `--verbose` to either command to print per-row parsing and extraction detail.
+Add `--verbose` to print per-row detail: parsing on every run, plus Claude extraction detail on a live run.
 
 ## Output
 
-The tool writes JSON in this shape:
+The tool writes JSON in this shape (`processed_at` is generated at write time — the value below is just an example):
 
 ```json
 {
