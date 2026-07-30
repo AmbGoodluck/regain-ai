@@ -11,7 +11,7 @@ def write_output(leads, output_path="output.json", success_count=0, error_count=
 
     Each item in `leads` is expected to already carry its extracted fields
     plus a `source_row` field, as produced by extractor.py. This function
-    only formats and writes — it does not validate or transform lead data.
+    only formats and writes. It does not validate or transform lead data.
 
     In dry-run mode the document is built and returned but never written to
     disk, so --dry-run can be verified without touching the filesystem.

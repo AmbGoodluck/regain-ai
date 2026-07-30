@@ -7,7 +7,7 @@ from writer import write_output
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Regain AI — Lead extraction from CSV using Claude API")
+    parser = argparse.ArgumentParser(description="Regain AI: Lead extraction from CSV using Claude API")
     parser.add_argument("--input", required=True, help="Path to input CSV file")
     parser.add_argument("--output", default="output.json", help="Path to output JSON file")
     parser.add_argument("--verbose", action="store_true", help="Print details for each row")
@@ -16,7 +16,7 @@ def main():
     args = parser.parse_args()
 
     if not os.path.exists(args.input):
-        print(f"Error: File not found — {args.input}")
+        print(f"Error: File not found ({args.input})")
         raise SystemExit(1)
 
     print("Starting Regain AI...")

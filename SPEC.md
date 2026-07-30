@@ -10,15 +10,15 @@
 
 ## Core MVP Features (P0 only)
 
-1. **Lead intake + ledger** — Web form webhook, missed-call detection, single source-of-truth Postgres table with status lifecycle (new → calling → booked/no_answer/not_interested).
+1. **Lead intake + ledger**: Web form webhook, missed-call detection, single source-of-truth Postgres table with status lifecycle (new → calling → booked/no_answer/not_interested).
 
-2. **AI callback engine** — Outbound call placed within 60s using cloned voice (ElevenLabs), injected lead context, hardcoded qualification questions, Cal.com booking.
+2. **AI callback engine**: Outbound call placed within 60s using cloned voice (ElevenLabs), injected lead context, hardcoded qualification questions, Cal.com booking.
 
-3. **Live transcript + human takeover** — Streaming transcript UI during call, one-click handoff to owner's phone, post-call summary + full transcript saved.
+3. **Live transcript + human takeover**: Streaming transcript UI during call, one-click handoff to owner's phone, post-call summary + full transcript saved.
 
-4. **Leads ledger UI** — Filterable list (All/Live/Booked/Recovered), detail view per lead, note-taking, status timeline.
+4. **Leads ledger UI**: Filterable list (All/Live/Booked/Recovered), detail view per lead, note-taking, status timeline.
 
-5. **Onboarding wizard + compliance** — 5-step setup (profile → lead sources → calendar → voice consent + clone → go live), consent record per voice, no callable lead without consent basis.
+5. **Onboarding wizard + compliance**: 5-step setup (profile → lead sources → calendar → voice consent + clone → go live), consent record per voice, no callable lead without consent basis.
 
 **What's excluded (P1+):** revenue dashboard, AI training UI, multi-voice roster, follow-ups, SMS, CRM sync, native apps, multi-location.
 
@@ -44,7 +44,7 @@
 **Goal:** Supabase ledger + web auth + onboarding wizard MVP  
 - [ ] Supabase schema: `businesses`, `users`, `leads`, `voices` (consent, not clone yet).
 - [ ] Expo web build scaffold + Supabase auth (magic link).
-- [ ] Onboarding wizard (step 1-4): biz profile form, Cal.com OAuth, voice consent record (no cloning yet—just store the rep's name/phone).
+- [ ] Onboarding wizard (step 1-4): biz profile form, Cal.com OAuth, voice consent record (no cloning yet, just store the rep's name/phone).
 - [ ] Leads table schema with `consent_basis` field; add leads via POST webhook (unsigned for now; add signature verification in P1).
 - [ ] Basic leads list UI (all/status filter, detail view, note field).
 - [ ] Deploy Expo web to Vercel.  

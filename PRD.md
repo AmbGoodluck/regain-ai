@@ -1,9 +1,9 @@
 # Regain AI - Product Requirements Document
-Portfolio Project — CLI Phase
+Portfolio Project: CLI Phase
 
 | Field | Detail |
 |---|---|
-| Version | 2.0 — Portfolio Rebuild |
+| Version | 2.0 (Portfolio Rebuild) |
 | Owner | Osman Amadu Jalloh |
 | Status | Active Build |
 | Last Updated | June 2026 |
@@ -13,7 +13,7 @@ Portfolio Project — CLI Phase
 
 ## 1. One-Line Summary
 
-Regain AI is a Python CLI tool that reads a CSV of contact form submissions on websites, uses the Claude API to extract and structure lead data, and outputs a CRM-ready JSON file — demonstrating real-world AI integration, data processing, and clean software engineering.
+Regain AI is a Python CLI tool that reads a CSV of contact form submissions on websites, uses the Claude API to extract and structure lead data, and outputs a CRM-ready JSON file, demonstrating real-world AI integration, data processing, and clean software engineering.
 
 ---
 
@@ -21,7 +21,7 @@ Regain AI is a Python CLI tool that reads a CSV of contact form submissions on w
 
 ### Why This Project Exists
 
-This project was scoped specifically to serve as a portfolio centerpiece for Summer 2027 tech internship recruiting. It is not a consumer product at this stage. The original Regain AI vision — an AI-powered voice callback system for home services contractors — remains the long-term direction. This CLI tool is Phase 1: a real, shippable artifact that demonstrates the core competency (AI-driven data transformation) without requiring infrastructure that is out of scope for the current skill level and timeline.
+This project was scoped specifically to serve as a portfolio centerpiece for Summer 2027 tech internship recruiting. It is not a consumer product at this stage. The original Regain AI vision (an AI-powered voice callback system for home services contractors) remains the long-term direction. This CLI tool is Phase 1: a real, shippable artifact that demonstrates the core competency (AI-driven data transformation) without requiring infrastructure that is out of scope for the current skill level and timeline.
 
 ### The Problem It Solves
 
@@ -76,14 +76,14 @@ Secondary user: myself (Osman), validating that the tool works correctly on real
 
 ## 6. Feature Requirements
 
-### F1 — CSV Ingestion
+### F1: CSV Ingestion
 
 - Accept a file path to a CSV as a CLI argument
 - Parse all rows, handling quoted fields and missing columns without crashing
 - Log a summary of rows parsed, rows skipped, and errors encountered
 - Support common contact form column names: name, email, phone, message, date, service
 
-### F2 — AI Extraction via Claude API
+### F2: AI Extraction via Claude API
 
 - Send each row's raw data to the Claude API with a structured extraction prompt
 - Extract: full name, email address, phone number, service type requested, urgency level (high/medium/low), preferred contact time
@@ -91,21 +91,21 @@ Secondary user: myself (Osman), validating that the tool works correctly on real
 - Handle API errors gracefully: retry once, then log failure and continue to next row
 - Prompt must be deterministic and produce consistent output across identical inputs
 
-### F3 — JSON Output
+### F3: JSON Output
 
 - Write a single `output.json` file containing an array of structured lead objects
 - Each object includes all extracted fields plus a `source_row` field for traceability
 - Include a metadata block: `total_leads`, `processed_at` timestamp, `success_count`, `error_count`
 - Output path configurable via CLI flag (default: `./output.json`)
 
-### F4 — CLI Interface
+### F4: CLI Interface
 
 - Entry point: `python main.py --input leads.csv`
 - Optional flags: `--output` (path), `--verbose` (show per-row processing), `--dry-run` (parse without calling API)
 - Clear success/error messages printed to stdout
 - Exit code 0 on success, 1 on fatal error
 
-### F5 — Error Handling & Edge Cases
+### F5: Error Handling & Edge Cases
 
 - Empty CSV: exit gracefully with a meaningful message
 - Missing required columns: skip row, log warning, continue
@@ -149,11 +149,11 @@ regain-ai/
 
 | Milestone | Target | Deliverables |
 |---|---|---|
-| M0 — Setup | Week 1 | GitHub repo created, README written, folder structure committed, first commit live |
-| M1 — Parser | Week 2 | `main.py` CLI entry point, `parser.py` reads CSV, logs row count and errors, handles missing columns |
-| M2 — Extractor | Week 3 | `extractor.py` built, structured prompt written, returns clean JSON per row, error + retry handling |
-| M3 — Writer | Week 3–4 | `writer.py` formats output, metadata block included, `output.json` written to disk, dry-run flag working |
-| M4 — v1.0 | Mid-July | End-to-end test on sample CSV, README updated with usage + example output, `requirements.txt` finalized, repo public and clean |
+| M0: Setup | Week 1 | GitHub repo created, README written, folder structure committed, first commit live |
+| M1: Parser | Week 2 | `main.py` CLI entry point, `parser.py` reads CSV, logs row count and errors, handles missing columns |
+| M2: Extractor | Week 3 | `extractor.py` built, structured prompt written, returns clean JSON per row, error + retry handling |
+| M3: Writer | Week 3–4 | `writer.py` formats output, metadata block included, `output.json` written to disk, dry-run flag working |
+| M4: v1.0 | Mid-July | End-to-end test on sample CSV, README updated with usage + example output, `requirements.txt` finalized, repo public and clean |
 
 ---
 
@@ -169,7 +169,7 @@ This project is complete when all of the following are true:
 
 ---
 
-## 11. Phase 2 — Future Vision
+## 11. Phase 2: Future Vision
 
 Phase 2 converts this CLI tool into the full Regain AI SaaS product: a web application that monitors live contact form submissions via webhooks, triggers AI-powered voice callbacks within 60 seconds using Vapi or Retell, books appointments via Cal.com, and tracks recovered revenue in a Supabase-backed leads ledger.
 

@@ -2,7 +2,7 @@
 
 [![Tests](https://github.com/AmbGoodluck/regain-ai/actions/workflows/tests.yml/badge.svg)](https://github.com/AmbGoodluck/regain-ai/actions/workflows/tests.yml)
 
-I built this Python CLI to take a CSV of website contact form submissions, send each row to the Claude API for structured extraction, and write the results to a CRM-ready JSON file. It's Phase 1 of a larger idea (see `PRD.md`) — a standalone, working tool rather than a demo stub.
+I built this Python CLI to take a CSV of website contact form submissions, send each row to the Claude API for structured extraction, and write the results to a CRM-ready JSON file. It's Phase 1 of a larger idea (see `PRD.md`), a standalone, working tool rather than a demo stub.
 
 ## Status
 
@@ -52,7 +52,7 @@ Phase 2 (not part of this CLI) is the full SaaS direction from `PRD.md`/`SPEC.md
 pip install -r requirements.txt
 ```
 
-   To also run the test suite, install `requirements-dev.txt` instead — it pulls in the runtime dependencies above plus pytest:
+   To also run the test suite, install `requirements-dev.txt` instead. It pulls in the runtime dependencies above plus pytest:
 
    ```bash
    pip install -r requirements-dev.txt
@@ -88,7 +88,7 @@ Add `--verbose` to print per-row detail: parsing on every run, plus Claude extra
 
 ## Output
 
-The tool writes JSON in this shape (`processed_at` is generated at write time — the value below is just an example):
+The tool writes JSON in this shape (`processed_at` is generated at write time, the value below is just an example):
 
 ```json
 {
@@ -115,7 +115,7 @@ The tool writes JSON in this shape (`processed_at` is generated at write time �
 
 ## Testing
 
-The test suite covers CSV parsing, JSON writing, the Claude extraction logic (mocked — no API key or network access required), and an end-to-end run of the CLI itself.
+The test suite covers CSV parsing, JSON writing, the Claude extraction logic (mocked, no API key or network access required), and an end-to-end run of the CLI itself.
 
 ```bash
 pip install -r requirements-dev.txt
@@ -125,10 +125,10 @@ pytest -v
 To manually verify the full flow end-to-end:
 
 ```bash
-# 1. Dry run — confirms parsing works, no API key needed
+# 1. Dry run: confirms parsing works, no API key needed
 python main.py --input sample_leads.csv --dry-run --verbose
 
-# 2. Live run — enriches sample_leads.csv with Claude and writes leads_output.json
+# 2. Live run: enriches sample_leads.csv with Claude and writes leads_output.json
 python main.py --input sample_leads.csv --output leads_output.json --verbose
 cat leads_output.json
 ```
