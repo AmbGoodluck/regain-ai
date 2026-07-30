@@ -1,7 +1,7 @@
 # Regain Ai
 
 ## Build Plan
-# Build Plan: Regain AI — Lean MVP
+# Build Plan: Regain AI: Lean MVP
 
 **Solo founder, Expo/React + Supabase + Cloudflare + TypeScript**  
 **Target ship: 8–12 weeks**
