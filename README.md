@@ -1,5 +1,7 @@
 # Regain AI
 
+[![Tests](https://github.com/AmbGoodluck/regain-ai/actions/workflows/tests.yml/badge.svg)](https://github.com/AmbGoodluck/regain-ai/actions/workflows/tests.yml)
+
 I built this Python CLI to take a CSV of website contact form submissions, send each row to the Claude API for structured extraction, and write the results to a CRM-ready JSON file. It's Phase 1 of a larger idea (see `PRD.md`) — a standalone, working tool rather than a demo stub.
 
 ## Status
